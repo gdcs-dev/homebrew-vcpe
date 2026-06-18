@@ -3,7 +3,7 @@ class Vcpe < Formula
   homepage "https://github.com/gdcs-dev/vcpe"
   url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/main.tar.gz"
   version "main"
-  sha256 :no_check
+  sha256 "55afcf077ddaecca608b745ddea81ebd6335c66d936bdbd2ada2b5ad5ce3f65a"
   license "MIT"
   head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
@@ -28,6 +28,8 @@ class Vcpe < Formula
         vcpe init
 
       The default deployment profile starts bng-7, webpa, and mv1-7.
+      This formula currently tracks the main branch. Replace the branch tarball
+      with a tagged release URL and fixed sha256 once release artifacts exist.
     EOS
   end
 
