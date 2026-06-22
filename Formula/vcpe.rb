@@ -3,7 +3,7 @@ class Vcpe < Formula
   homepage "https://github.com/gdcs-dev/vcpe"
   url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/main.tar.gz"
   version "main"
-  sha256 "55afcf077ddaecca608b745ddea81ebd6335c66d936bdbd2ada2b5ad5ce3f65a"
+  sha256 :no_check
   license "MIT"
   head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
