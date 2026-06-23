@@ -3,7 +3,7 @@ class Vcpe < Formula
   homepage "https://github.com/gdcs-dev/vcpe"
   url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/main.tar.gz"
   version "main"
-  sha256 "c3182ff879db4d3a70a41a3928d67797513434de563927e3c2fe53d9eb304693"
+  sha256 "d5f745809dde6a5436995e8b31757829e87592c3975e932b93aa5c078e6d5242"
   license "MIT"
   head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
@@ -15,7 +15,7 @@ class Vcpe < Formula
     libexec.install Dir["*"]
 
     env = { "VCPE_INSTALL_ROOT" => libexec }
-    %w[vcpe bng mv1 webpa xb10 net homebrew-tap].each do |script_name|
+    %w[vcpe bng client mv1 routerd webpa xb10 net homebrew-tap].each do |script_name|
       (bin/script_name).write_env_script libexec/"scripts/#{script_name}", env
     end
   end
