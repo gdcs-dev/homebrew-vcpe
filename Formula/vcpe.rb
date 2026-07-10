@@ -1,40 +1,47 @@
 class Vcpe < Formula
   desc "Podman-based vCPE lab orchestration"
   homepage "https://github.com/gdcs-dev/vcpe"
-  url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/main.tar.gz"
-  version "main"
-  sha256 "1054a0a9dbaa51efe045d49319229fe4862e7f95b9ace5d42ebd7230d616ceb1"
+  url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/development.tar.gz"
+  version "development"
+  sha256 "64db0c0c169b13d10d0be2433a910c921d9f89e95c766a350d0dd968ef812095"
   license "MIT"
-  head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
+  head "https://github.com/gdcs-dev/vcpe.git", branch: "development"
 
+  depends_on "go" => :build
   depends_on "podman"
   depends_on "podman-compose"
-  depends_on "python@3"
 
   def install
-    libexec.install Dir["*"]
-
-    env = { "VCPE_INSTALL_ROOT" => libexec }
-    %w[vcpe bng client mv1 routerd webpa xb10 net homebrew-tap].each do |script_name|
-      (bin/script_name).write_env_script libexec/"scripts/#{script_name}", env
+    cd "controlplane" do
+      system "go", "build",
+             "-ldflags", "-s -w",
+             "-o", bin/"vcpe",
+             "./cmd/vcpe"
     end
+    pkgshare.install "manifests"
   end
 
   def caveats
     <<~EOS
       Run `podman machine init` and `podman machine start` on macOS before using vcpe.
-      Then initialize the user config with:
 
-        vcpe init
+      Deployment manifests are installed to:
+        \#{pkgshare}/manifests/
 
-      The default deployment profile starts bng-7, webpa, and mv1-7.
-      This formula currently tracks the main branch. Replace the branch tarball
-      with a tagged release URL and fixed sha256 once release artifacts exist.
+      To see available manifests:
+        vcpe manifest list
+
+      Apply a deployment:
+        vcpe apply --manifest <name>    # by name
+        vcpe apply                      # auto-select when only one manifest exists
+
+      This formula tracks the development branch. The sha256 is a point-in-time
+      snapshot; run scripts/sync-homebrew-vcpe after significant pushes to update it.
+      Use `brew install --HEAD vcpe` to always install the latest development branch.
     EOS
   end
 
   test do
-    output = shell_output("#{bin}/vcpe init")
-    assert_match "VCPE_PROFILE=default", output
+    assert_match "vcpe", shell_output("\#{bin}/vcpe --help")
   end
 end
