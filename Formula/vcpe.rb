@@ -19,6 +19,7 @@ class Vcpe < Formula
              "./cmd/vcpe"
     end
     pkgshare.install "manifests"
+    pkgshare.install "services"
   end
 
   def caveats
