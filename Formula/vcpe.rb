@@ -1,11 +1,11 @@
 class Vcpe < Formula
   desc "Podman-based vCPE lab orchestration"
   homepage "https://github.com/gdcs-dev/vcpe"
-  url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/development.tar.gz"
-  version "development"
-  sha256 "6a72685e6f84f23998fcd54156250e131f814cc112dd780d3e39297a268b78c5"
+  url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/main.tar.gz"
+  version "main"
+  sha256 "efb5d23f3f3d8ac804228ca37f393ab2136d90ca3bac1817e7780ad11cb5fd33"
   license "MIT"
-  head "https://github.com/gdcs-dev/vcpe.git", branch: "development"
+  head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
   depends_on "go" => :build
   depends_on "podman"
@@ -36,9 +36,9 @@ class Vcpe < Formula
         vcpe apply --manifest <name>    # by name
         vcpe apply                      # auto-select when only one manifest exists
 
-      This formula tracks the development branch. The sha256 is a point-in-time
+      This formula tracks the main branch. The sha256 is a point-in-time
       snapshot; run scripts/sync-homebrew-vcpe after significant pushes to update it.
-      Use `brew install --HEAD vcpe` to always install the latest development branch.
+      Use `brew install --HEAD vcpe` to always install the latest main branch.
     EOS
   end
 
