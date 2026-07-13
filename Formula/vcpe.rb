@@ -3,7 +3,7 @@ class Vcpe < Formula
   homepage "https://github.com/gdcs-dev/vcpe"
   url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/main.tar.gz"
   version "main"
-  sha256 "6f1847d1dc1dbcb247101f67181e7221f07114493921470874b19ccd1553a911"
+  sha256 "d2f776171d5c2fe93f706f6db68160b898191ae35444c67c5657ad5694834ec0"
   license "MIT"
   head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
@@ -27,7 +27,7 @@ class Vcpe < Formula
       Run `podman machine init` and `podman machine start` on macOS before using vcpe.
 
       Deployment manifests are installed to:
-        \#{pkgshare}/manifests/
+        #{pkgshare}/manifests/
 
       To see available manifests:
         vcpe manifest list
@@ -43,6 +43,6 @@ class Vcpe < Formula
   end
 
   test do
-    assert_match "vcpe", shell_output("\#{bin}/vcpe --help")
+    assert_match "vcpe", shell_output("#{bin}/vcpe --help")
   end
 end
