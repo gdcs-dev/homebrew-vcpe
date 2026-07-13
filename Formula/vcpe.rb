@@ -1,9 +1,9 @@
 class Vcpe < Formula
   desc "Podman-based vCPE lab orchestration"
   homepage "https://github.com/gdcs-dev/vcpe"
-  url "https://github.com/gdcs-dev/vcpe/archive/refs/heads/main.tar.gz"
-  version "main"
-  sha256 "bfa65a1ff24a9ec8ad09b66157960d8d92949dc9c2fd29b01dc76b0b70b3a4e5"
+  url "https://github.com/gdcs-dev/vcpe/archive/refs/tags/v0.1.0.tar.gz"
+  version "0.1.0"
+  sha256 "a66266b4c564dff42ca668bc5acd98d49dc75bf5963a41e9f55a01241498c785"
   license "MIT"
   head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
@@ -14,7 +14,7 @@ class Vcpe < Formula
   def install
     cd "controlplane" do
       system "go", "build",
-             "-ldflags", "-s -w",
+             "-ldflags", "-s -w -X 'main.version=#{version}'",
              "-o", bin/"vcpe",
              "./cmd/vcpe"
     end
@@ -36,7 +36,7 @@ class Vcpe < Formula
         vcpe apply --manifest <name>    # by name
         vcpe apply                      # auto-select when only one manifest exists
 
-      This formula tracks the main branch. The sha256 is a point-in-time
+      This formula tracks the release branch. The sha256 is a point-in-time
       snapshot; run scripts/sync-homebrew-vcpe after significant pushes to update it.
       Use `brew install --HEAD vcpe` to always install the latest main branch.
     EOS
