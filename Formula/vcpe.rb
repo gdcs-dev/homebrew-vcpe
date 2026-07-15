@@ -1,9 +1,9 @@
 class Vcpe < Formula
   desc "Podman-based vCPE lab orchestration"
   homepage "https://github.com/gdcs-dev/vcpe"
-  url "https://github.com/gdcs-dev/vcpe/archive/refs/tags/v0.2.3.tar.gz"
-  version "0.2.3"
-  sha256 "21fe8a216fedbb1f33460b79a07ec800c7f03a0437a71f8463cd1e3107554fee"
+  url "https://github.com/gdcs-dev/vcpe/archive/refs/tags/v0.2.4.tar.gz"
+  version "0.2.4"
+  sha256 "b366ee0d42315f5927f7ce43dc283d0786c945a240c954a167c48a8fe710a961"
   license "MIT"
   head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
@@ -14,6 +14,7 @@ class Vcpe < Formula
   def install
     cd "controlplane" do
       system "go", "build",
+             "-tags", "homebrew",
              "-ldflags", "-s -w -X 'main.version=#{version}'",
              "-o", bin/"vcpe",
              "./cmd/vcpe"
