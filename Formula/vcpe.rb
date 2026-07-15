@@ -33,8 +33,8 @@ class Vcpe < Formula
         vcpe manifest list
 
       Apply a deployment:
-        vcpe apply --manifest <name>    # by name
-        vcpe apply                      # auto-select when only one manifest exists
+        vcpe up --manifest <name>    # by name
+        vcpe up                      # auto-select when only one manifest exists
 
       This formula tracks the release branch. The sha256 is a point-in-time
       snapshot; run scripts/sync-homebrew-vcpe after significant pushes to update it.
