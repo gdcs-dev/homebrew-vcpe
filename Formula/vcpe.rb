@@ -1,9 +1,9 @@
 class Vcpe < Formula
   desc "Podman-based vCPE lab orchestration"
   homepage "https://github.com/gdcs-dev/vcpe"
-  url "https://github.com/gdcs-dev/vcpe/archive/refs/tags/v0.2.6.tar.gz"
-  version "0.2.6"
-  sha256 "2c4dda8eb4b8e8a3db41b25f764a787df29797d4702a162fa396800078ba39a1"
+  url "https://github.com/gdcs-dev/vcpe/archive/refs/tags/v0.2.7.tar.gz"
+  version "0.2.7"
+  sha256 "1785000cba0ff69f45840e254b68dd934e1d2b7ef2da74bbd706635aa3a7a041"
   license "MIT"
   head "https://github.com/gdcs-dev/vcpe.git", branch: "main"
 
